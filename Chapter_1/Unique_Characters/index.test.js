@@ -1,5 +1,5 @@
 const test = require('ava');
-const uniqueCharacters = require('./1.1_Unique_Characters');
+const uniqueCharacters = require('.');
 
 // BRUTEFORCE
 test('Unique Characters: Bruteforce Test 1', (t) => {
