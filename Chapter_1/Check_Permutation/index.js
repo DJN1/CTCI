@@ -9,7 +9,7 @@ const bruteForce = (str1, str2) => {
   return str1.length === str2.length;
 };
 
-// Runs in O(1) and O(N) space
+// Runs in O(N log N) and O(N) space
 const sortedArrayMethod = (str1, str2) => {
   if (str1 === null && str2 === null) return false;
   if (str1.length !== str2.length) return false;
