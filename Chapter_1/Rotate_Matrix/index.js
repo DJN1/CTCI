@@ -1,3 +1,4 @@
+// Runs in O(N) time and space
 const bruteForce = (matrix) => {
   if (matrix === null || matrix.length === 0 || matrix[0].length === 0
         || matrix.length !== matrix[0].length) return false;
