@@ -1,0 +1,65 @@
+const test = require('ava');
+const { Node, LinkedList } = require('.');
+
+test('Kth To Last: Null Test', (t) => {
+  const list = new LinkedList();
+  t.deepEqual(list.getKthToLast(0), false);
+});
+test('Kth To Last: Out of Range Test', (t) => {
+  const list = new LinkedList();
+  const node1 = new Node(1);
+  list.addNode(node1);
+  const node2 = new Node(2);
+  list.addNode(node2);
+  const node3 = new Node(3);
+  list.addNode(node3);
+  t.deepEqual(list.getKthToLast(3), false);
+});
+test('Kth To Last: Valid Test 1', (t) => {
+  const list = new LinkedList();
+  const node1 = new Node(1);
+  list.addNode(node1);
+  const node2 = new Node(2);
+  list.addNode(node2);
+  const node3 = new Node(3);
+  list.addNode(node3);
+  const node4 = new Node(4);
+  list.addNode(node4);
+  const node5 = new Node(5);
+  list.addNode(node5);
+  t.deepEqual(list.getKthToLast(2), new Node(3));
+});
+test('Kth To Last: Valid Test 2', (t) => {
+  const list = new LinkedList();
+  const node1 = new Node(1);
+  list.addNode(node1);
+  const node2 = new Node(2);
+  list.addNode(node2);
+  const node3 = new Node(3);
+  list.addNode(node3);
+  const node4 = new Node(4);
+  list.addNode(node4);
+  const node5 = new Node(5);
+  list.addNode(node5);
+  const node6 = new Node(6);
+  list.addNode(node6);
+  const node7 = new Node(7);
+  list.addNode(node7);
+  const node8 = new Node(8);
+  list.addNode(node8);
+  const node9 = new Node(9);
+  list.addNode(node9);
+  const node10 = new Node(10);
+  list.addNode(node10);
+  const node11 = new Node(11);
+  list.addNode(node11);
+  const node12 = new Node(12);
+  list.addNode(node12);
+  const node13 = new Node(13);
+  list.addNode(node13);
+  const node14 = new Node(14);
+  list.addNode(node14);
+  const node15 = new Node(15);
+  list.addNode(node15);
+  t.deepEqual(list.getKthToLast(5), new Node(10));
+});
