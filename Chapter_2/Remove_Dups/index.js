@@ -43,6 +43,7 @@ class LinkedList {
     }
   }
 
+  // Runs in O(N) time and O(1) space
   removeDups() {
     let node = this.head;
     while (node !== undefined) {
