@@ -1,21 +1,21 @@
 class Node {
   constructor(data) {
     this.data = data;
+    this.next = null;
   }
 }
 
 class LinkedList {
-  constructor() {
-    this.head = null;
+  constructor(head = null) {
+    this.head = head;
   }
 
   checkDups(node) {
     let currentNode = this.head;
     while (currentNode !== node) {
-      if (currentNode.data === node.data) {
+      if (node !== null && currentNode.data === node.data) {
         return true;
       }
-
       currentNode = currentNode.next;
     }
     return false;
@@ -24,7 +24,7 @@ class LinkedList {
   getList() {
     const returnList = [];
     let temp = this.head;
-    while (temp !== undefined) {
+    while (temp !== undefined && temp !== null) {
       returnList.push(temp.data);
       temp = temp.next;
     }
@@ -32,8 +32,7 @@ class LinkedList {
   }
 
   addNode(node) {
-    if (this.head === undefined && this.head !== null) {
-      node.next = null; // eslint-disable-line no-param-reassign
+    if (this.head === undefined || this.head === null) {
       this.head = node;
     } else {
       let temp = this.head;
@@ -47,10 +46,12 @@ class LinkedList {
   removeDups() {
     let node = this.head;
     while (node !== undefined) {
-      if (node.next !== undefined && this.checkDups(node.next)) {
+      if (node !== null && node.next !== undefined && this.checkDups(node.next)) {
         node.next = node.next.next;
-      } else {
+      } else if (node !== null && node.next) {
         node = node.next;
+      } else {
+        return this.head;
       }
     }
     return this.head;
