@@ -29,42 +29,50 @@ class LinkedList {
         temp = temp.next;
       }
       temp.next = node;
+      temp.next.next = null;
     }
   }
 
   partition(node) {
     let currentNode = this.head;
     const smaller = new LinkedList();
-    const larger = new LinkedList();
-    larger.addNode(new Node(node.data));
-    while (currentNode !== null) {
-      if (currentNode.data >= node) {
+    const larger = new LinkedList(node);
+    while (currentNode.next !== undefined && currentNode.next !== null) {
+      if (currentNode.data >= node.data) {
         larger.addNode(new Node(currentNode.data));
       } else {
         smaller.addNode(new Node(currentNode.data));
       }
       currentNode = currentNode.next;
     }
-    return [smaller, larger];
+    smaller.head.next = larger;
+    return smaller;
   }
 }
-console.log('starting');
+
 const smallerList = new LinkedList();
 const largerList = new LinkedList();
 const list = new LinkedList();
-const node = new Node(0);
-const node1 = new Node(1);
-const node2 = new Node(2);
-const node3 = new Node(3);
-const node4 = new Node(4);
-const node5 = new Node(5);
-const node6 = new Node(6);
+let node = new Node(0);
+let node1 = new Node(1);
+let node2 = new Node(2);
+let node3 = new Node(3);
+let node4 = new Node(4);
+let node5 = new Node(5);
+let node6 = new Node(6);
 smallerList.addNode(node);
 smallerList.addNode(node1);
 smallerList.addNode(node2);
 largerList.addNode(node4);
 largerList.addNode(node5);
 largerList.addNode(node6);
+node = new Node(0);
+node1 = new Node(1);
+node2 = new Node(2);
+node3 = new Node(3);
+node4 = new Node(4);
+node5 = new Node(5);
+node6 = new Node(6);
 list.addNode(node);
 list.addNode(node1);
 list.addNode(node2);
@@ -72,10 +80,8 @@ list.addNode(node3);
 list.addNode(node4);
 list.addNode(node5);
 list.addNode(node6);
-console.log('reached partition');
-const [smaller, larger] = list.partition(new Node(4));
-console.log(smaller.getList());
-console.log(larger.getList());
+const partioned = list.partition(node4);
+console.log(partioned.getList());
 
 module.exports = {
   Node,
